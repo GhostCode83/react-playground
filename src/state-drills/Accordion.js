@@ -6,27 +6,36 @@ static defaultProps = {
 }
 
   state = {
-    currentSectionIndex: 0
+    currentSectionIndex: null
   }
 
-  handleButtonClick = () => {
-    console.log()
-    this.setState({ currentSectionIndex: 0})
+  handleButtonClick = (index) => {
+    this.setState({ currentSectionIndex: index})
   }
 
-  render() {
-    let typesOfEating = this.props.sections.map((types, index) => 
-      (<li key={index}>
-          <button  type='submit' onClick={this.handleButtonClick(index)}>{types.title}</button>
+  renderList(section, index, currentSectionIndex) {
+    return (
+      <li key={index}>
+          <button  
+            type='submit' 
+            onClick={() => this.handleButtonClick(index)}
+          >
+            {section.title}
+          </button>
+          {
+          (currentSectionIndex === index) && 
+          <p>{section.content}</p>}
       </li>)
-    )
-    
-    const currentSection = this.props.sections[this.currentSectionIndex]
+  }
+  
+  render() {
+    const { currentSectionIndex } = this.state
+    const { sections } = this.props
     return (
       <div>
         <ul>
-          {typesOfEating}
-          {currentSection}
+          {sections.map((section, index) =>
+          this.renderList(section, index, currentSectionIndex))}
         </ul>
       </div>
     )
