@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import Messages from './Messages';
-import TheDate from './state/TheDate';
-import Counter from './state/Counter';
-import HelloWorld from './state-drills/HelloWorld';
+import Accordion from './state-drills/Accordion';
 
 
+
+
+const sectionsProp = [
+  {title: "Vegan", 
+    content: "plants only"},
+  {title: "Octo-Ovo Vegetarian", 
+    content: "plants, dairy and eggs"},
+  {title: "Omnivour", 
+    content: "plants and aninimals"}
+
+]
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>YOUR APPLICATION NAME!</h1>
-        <HelloWorld />
-
+        <Accordion sections={sectionsProp} />
       </div>
 
     );

@@ -25,7 +25,7 @@ class RouletteGun extends React.Component {
     )
     setTimeout(() => {
       this.setState({spinningTheChamber: false})
-      if  (chamber == this.props.chamber) {
+      if  (chamber === this.props.chamber) {
         this.setState({message: 'BANG!!!'})
       } else {
         this.setState({message: "you're safe!"})
